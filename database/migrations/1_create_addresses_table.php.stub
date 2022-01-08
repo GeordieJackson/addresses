@@ -7,7 +7,7 @@
     return new class extends Migration {
         public function up()
         {
-            Schema::create('addresses_table', function(Blueprint $table) {
+            Schema::create('addresses', function(Blueprint $table) {
                 $table->id();
                 
                 $table->string('name')->nullable();
@@ -17,5 +17,10 @@
                 
                 $table->timestamps();
             });
+        }
+        
+        public function down()
+        {
+            Schema::dropIfExists('addresses');
         }
     };

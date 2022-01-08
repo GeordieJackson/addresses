@@ -1,25 +1,61 @@
 <?php
-
-namespace GeordieJackson\Address;
-
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use GeordieJackson\Address\Commands\AddressCommand;
-
-class AddressServiceProvider extends PackageServiceProvider
-{
-    public function configurePackage(Package $package): void
+    
+    namespace GeordieJackson\Address;
+    
+    use GeordieJackson\Address\Commands\AddressCommand;
+    use GeordieJackson\Address\Models\Address;
+    use GeordieJackson\Phone\Models\Phone;
+    use Illuminate\Database\Eloquent\Relations\Relation;
+    use Illuminate\Support\Collection;
+    use Illuminate\Support\Facades\Schema;
+    use Illuminate\Support\Str;
+    use Spatie\LaravelPackageTools\Package;
+    use Spatie\LaravelPackageTools\PackageServiceProvider;
+    
+    use function class_basename;
+    use function collect;
+    use function config;
+    
+    class AddressServiceProvider extends PackageServiceProvider
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('addresses')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_addresses_table')
-            ->hasCommand(AddressCommand::class);
+        public function boot()
+        {
+            $morphMap = $this->getMorphMap();
+            $this->resolveRelationsUsing($morphMap);
+            Relation::morphMap($morphMap->toArray());
+            Schema::defaultStringLength(191); // For index string length with Maria DBs
+            
+            return parent::boot();
+        }
+        
+        public function configurePackage(Package $package) : void
+        {
+            $package
+                ->name('addresses')
+                ->hasConfigFile()
+                ->hasViews()
+                ->hasMigration('1_create_addresses_table')
+                ->hasMigration('2_create_addressables_table');
+        }
+        
+        protected function getMorphMap() : Collection
+        {
+            $morphMap = collect();
+            foreach(config('addresses') as $class => $name) {
+                $key = ! empty($name) ? Str::plural($name) : Str::lower(Str::plural(class_basename($class)));
+                $morphMap [$key] = $class;
+            }
+            
+            return $morphMap;
+        }
+        
+        protected function resolveRelationsUsing(Collection $morphMap) : void
+        {
+            $morphMap->each(function($className, $relationName) {
+                Address::resolveRelationUsing($relationName, function($addressModel) use ($className) {
+                    return $addressModel->morphedByMany($className, 'addressable');
+                });
+            });
+        }
+        
     }
-}
