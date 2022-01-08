@@ -4,7 +4,9 @@
     
     use GeordieJackson\Address\Tests\TestModels\Supplier;
     use Illuminate\Http\Request;
-    
+
+    use function dump;
+
     class SupplierController
     {
         public function store(Request $request)

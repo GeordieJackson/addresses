@@ -5,6 +5,7 @@
     use GeordieJackson\Address\AddressServiceProvider;
     use GeordieJackson\Address\Models\Address;
     use GeordieJackson\Address\Models\Extension;
+    use GeordieJackson\Address\Tests\TestControllers\SupplierController;
     use GeordieJackson\Address\Tests\TestModels\Supplier;
     use GeordieJackson\Address\Tests\TestModels\User;
     use Illuminate\Database\Eloquent\Factories\Factory;
