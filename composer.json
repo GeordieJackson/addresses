@@ -1,6 +1,6 @@
 {
     "name": "geordiejackson/addresses",
-    "description": "This is my package addresses",
+    "description": "Laravel addresses package",
     "keywords": [
         "GeordieJackson",
         "laravel",
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "GeordieJackson\\Address\\": "src",
-            "GeordieJackson\\Address\\Database\\Factories\\": "database/factories"
+            "GeordieJackson\\Addresses\\": "src",
+            "GeordieJackson\\Addresses\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "GeordieJackson\\Address\\Tests\\": "tests"
+            "GeordieJackson\\Addresses\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -53,10 +53,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "GeordieJackson\\Address\\AddressServiceProvider"
+                "GeordieJackson\\Addresses\\AddressServiceProvider"
             ],
             "aliases": {
-                "Address": "GeordieJackson\\Address\\Facades\\Address"
+                "Address": "GeordieJackson\\Addresses\\Facades\\Address"
             }
         }
     },

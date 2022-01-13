@@ -52,7 +52,7 @@ return [
 ## Usage
 
 ```php
-$addresses = new GeordieJackson\Address();
+$addresses = new GeordieJackson\Addresses();
 echo $addresses->echoPhrase('Hello, GeordieJackson!');
 ```
 

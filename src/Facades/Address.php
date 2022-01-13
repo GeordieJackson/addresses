@@ -1,11 +1,11 @@
 <?php
 
-namespace GeordieJackson\Address\Facades;
+namespace GeordieJackson\Addresses\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \GeordieJackson\Address\Address
+ * @see \GeordieJackson\Addresses\Address
  */
 class Address extends Facade
 {

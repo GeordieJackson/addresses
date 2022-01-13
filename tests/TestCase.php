@@ -1,13 +1,13 @@
 <?php
     
-    namespace GeordieJackson\Address\Tests;
+    namespace GeordieJackson\Addresses\Tests;
     
-    use GeordieJackson\Address\AddressServiceProvider;
-    use GeordieJackson\Address\Models\Address;
-    use GeordieJackson\Address\Models\Extension;
-    use GeordieJackson\Address\Tests\TestControllers\SupplierController;
-    use GeordieJackson\Address\Tests\TestModels\Supplier;
-    use GeordieJackson\Address\Tests\TestModels\User;
+    use GeordieJackson\Addresses\AddressServiceProvider;
+    use GeordieJackson\Addresses\Models\Address;
+    use GeordieJackson\Addresses\Models\Extension;
+    use GeordieJackson\Addresses\Tests\TestControllers\SupplierController;
+    use GeordieJackson\Addresses\Tests\TestModels\Supplier;
+    use GeordieJackson\Addresses\Tests\TestModels\User;
     use Illuminate\Database\Eloquent\Factories\Factory;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\Schema;
@@ -28,7 +28,7 @@
             Route::macro('suppliers', function(string $baseUrl = 'suppliers') {
                 Route::prefix($baseUrl)->group(function() {
                     Route::get('create', [SupplierController::class, 'create']);
-                    Route::put('store', [SupplierController::class, 'store']);
+                    Route::post('store', [SupplierController::class, 'store']);
                     Route::put('update', [SupplierController::class, 'update']);
                 });
             });
@@ -40,7 +40,7 @@
             
             Factory::guessFactoryNamesUsing(
                 fn(string $modelName
-                ) => 'GeordieJackson\\Address\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+                ) => 'GeordieJackson\\Addresses\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
             );
         }
         
@@ -60,10 +60,10 @@
             
             $migration = include __DIR__ . '/../database/migrations/2_create_addressables_table.php.stub';
             $migration->up();
-
+            
             $migration = include __DIR__ . '/TestMigrations/create_users_table.php.stub';
             $migration->up();
-
+            
             $migration = include __DIR__ . '/TestMigrations/create_suppliers_table.php.stub';
             $migration->up();
         }
@@ -82,9 +82,10 @@
             string $delete = null,
         ) {
             $address = Address::factory()->raw([
-                'name' => $name,
-                'address' => $address,
-                'postcode' => $postcode,
+                Address::KEYS['name'] => $name,
+                Address::KEYS['address'] => $address,
+                Address::KEYS['postcode'] => $postcode,
+                Address::KEYS['country'] => $country,
             ]);
             
             if($address_id) {

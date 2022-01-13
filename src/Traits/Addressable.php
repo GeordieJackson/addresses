@@ -1,9 +1,9 @@
 <?php
     
-    namespace GeordieJackson\Address\Traits;
+    namespace GeordieJackson\Addresses\Traits;
     
-    use GeordieJackson\Address\Models\Address;
-    use GeordieJackson\Address\Models\Extension;
+    use GeordieJackson\Addresses\Models\Address;
+    use GeordieJackson\Addresses\Models\Extension;
     use Illuminate\Database\Eloquent\Relations\MorphToMany;
     use Illuminate\Support\Collection;
     

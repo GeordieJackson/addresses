@@ -1,7 +1,7 @@
 <?php
     
-    use GeordieJackson\Address\Models\Address;
-    use GeordieJackson\Address\Tests\TestModels\User;
+    use GeordieJackson\Addresses\Models\Address;
+    use GeordieJackson\Addresses\Tests\TestModels\User;
     
     it('can attach an address to a model', function() {
         $this->migrate();

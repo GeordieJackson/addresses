@@ -1,12 +1,10 @@
 <?php
     
-    namespace GeordieJackson\Address\Tests\TestControllers;
+    namespace GeordieJackson\Addresses\Tests\TestControllers;
     
-    use GeordieJackson\Address\Tests\TestModels\Supplier;
+    use GeordieJackson\Addresses\Tests\TestModels\Supplier;
     use Illuminate\Http\Request;
-
-    use function dump;
-
+    
     class SupplierController
     {
         public function store(Request $request)

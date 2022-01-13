@@ -1,8 +1,8 @@
 <?php
     
-    namespace GeordieJackson\Address\Database\Factories;
+    namespace GeordieJackson\Addresses\Database\Factories;
     
-    use GeordieJackson\Address\Models\Address;
+    use GeordieJackson\Addresses\Models\Address;
     use Illuminate\Database\Eloquent\Factories\Factory;
     
     class AddressFactory extends Factory

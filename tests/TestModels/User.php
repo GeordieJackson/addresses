@@ -1,8 +1,8 @@
 <?php
     
-    namespace GeordieJackson\Address\Tests\TestModels;
+    namespace GeordieJackson\Addresses\Tests\TestModels;
     
-    use GeordieJackson\Address\Traits\Addressable;
+    use GeordieJackson\Addresses\Traits\Addressable;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
     

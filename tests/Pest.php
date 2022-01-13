@@ -1,6 +1,6 @@
 <?php
     
-    use GeordieJackson\Address\Tests\TestCase;
+    use GeordieJackson\Addresses\Tests\TestCase;
     use Illuminate\Support\Facades\Route;
     
     uses(TestCase::class)

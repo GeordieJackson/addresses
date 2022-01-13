@@ -1,9 +1,9 @@
 <?php
     
-    namespace GeordieJackson\Address;
+    namespace GeordieJackson\Addresses;
     
-    use GeordieJackson\Address\Commands\AddressCommand;
-    use GeordieJackson\Address\Models\Address;
+    use GeordieJackson\Addresses\Commands\AddressCommand;
+    use GeordieJackson\Addresses\Models\Address;
     use GeordieJackson\Phone\Models\Phone;
     use Illuminate\Database\Eloquent\Relations\Relation;
     use Illuminate\Support\Collection;

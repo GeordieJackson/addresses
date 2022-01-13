@@ -1,8 +1,8 @@
 <?php
     
-    namespace GeordieJackson\Address\Database\Factories;
+    namespace GeordieJackson\Addresses\Database\Factories;
     
-    use GeordieJackson\Address\Tests\TestModels\User;
+    use GeordieJackson\Addresses\Tests\TestModels\User;
     use Illuminate\Database\Eloquent\Factories\Factory;
 
     class UserFactory extends Factory

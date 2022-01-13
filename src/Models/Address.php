@@ -1,6 +1,6 @@
 <?php
     
-    namespace GeordieJackson\Address\Models;
+    namespace GeordieJackson\Addresses\Models;
     
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
