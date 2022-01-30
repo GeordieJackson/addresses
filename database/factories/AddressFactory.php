@@ -14,7 +14,7 @@
             return [
                 Address::KEYS['name'] => $this->faker->streetAddress,
                 Address::KEYS['address'] => $this->faker->address,
-                Address::KEYS['postcode'] => $this->faker->postcode,
+                Address::KEYS['code'] => $this->faker->postcode,
                 Address::KEYS['country'] => $this->faker->country,
             ];
         }

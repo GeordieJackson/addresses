@@ -77,14 +77,14 @@
             int $address_id = null,
             string $name = null,
             string $address = null,
-            string $postcode = null,
+            string $code = null,
             array $country = null,
             string $delete = null,
         ) {
             $address = Address::factory()->raw([
                 Address::KEYS['name'] => $name,
                 Address::KEYS['address'] => $address,
-                Address::KEYS['postcode'] => $postcode,
+                Address::KEYS['code'] => $code,
                 Address::KEYS['country'] => $country,
             ]);
             

@@ -65,7 +65,7 @@
                 return Address::firstOrCreate([
                     Address::KEYS['name'] => $addressEntry[Address::KEYS['name']],
                     Address::KEYS['address'] => $addressEntry[Address::KEYS['address']],
-                    Address::KEYS['postcode'] => $addressEntry[Address::KEYS['postcode']],
+                    Address::KEYS['code'] => $addressEntry[Address::KEYS['code']],
                 ], $addressEntry);
             }
             
@@ -85,7 +85,7 @@
         
         protected function isBlank($address)
         {
-            return ($address[Address::KEYS['postcode']] || $address[Address::KEYS['address']] || $address[Address::KEYS['name']])
+            return ($address[Address::KEYS['code']] || $address[Address::KEYS['address']] || $address[Address::KEYS['name']])
                 ? false
                 : true;
         }

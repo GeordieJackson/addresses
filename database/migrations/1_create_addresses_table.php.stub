@@ -12,7 +12,7 @@
                 
                 $table->string('name')->nullable();
                 $table->string('address')->nullable();
-                $table->string('postcode')->nullable();
+                $table->string('code')->nullable();
                 $table->string('country')->nullable();
                 
                 $table->timestamps();

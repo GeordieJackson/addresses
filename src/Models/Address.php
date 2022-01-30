@@ -15,11 +15,11 @@
         use HasFactory;
         
         public const KEYS = [
-            'name' => 'name', 'address' => 'address', 'postcode' => 'postcode', 'country' => 'country',
+            'name' => 'name', 'address' => 'address', 'code' => 'code', 'country' => 'country',
         ];
         
         protected $fillable = [
-            self::KEYS['name'], self::KEYS['address'], self::KEYS['postcode'], self::KEYS['country'],
+            self::KEYS['name'], self::KEYS['address'], self::KEYS['code'], self::KEYS['country'],
         ];
         
         /**

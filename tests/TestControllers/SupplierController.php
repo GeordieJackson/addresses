@@ -14,9 +14,9 @@
         
         public function update(Request $request)
         {
-            $supplier = Supplier::findOrFail($request->id);
-            $supplier->fill($request->all());
-            $supplier->save();
-            $supplier->syncAddresses();
+            Supplier::findOrFail($request->id)
+                ->fill($request->all())
+                ->save()
+                ->syncAddresses();
         }
     }
