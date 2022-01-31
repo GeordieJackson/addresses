@@ -11,6 +11,6 @@ class Address extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'addresses';
+       // return 'addresses';
     }
 }
