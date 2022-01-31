@@ -78,7 +78,7 @@
             string $name = null,
             string $address = null,
             string $code = null,
-            array $country = null,
+            string $country = null,
             string $delete = null,
         ) {
             $address = Address::factory()->raw([
