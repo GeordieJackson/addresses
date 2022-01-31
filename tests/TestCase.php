@@ -30,6 +30,7 @@
                     Route::get('create', [SupplierController::class, 'create']);
                     Route::post('store', [SupplierController::class, 'store']);
                     Route::put('update', [SupplierController::class, 'update']);
+                    Route::patch('update', [SupplierController::class, 'update']);
                 });
             });
         }
