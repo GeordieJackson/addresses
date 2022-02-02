@@ -23,6 +23,7 @@
         public function syncAddresses() : void
         {
             $addresses = Addresses::viaRequest();
+//            dd($addresses);
             $this->addresses()->sync(ExtractIds::from($addresses));
         }
     }

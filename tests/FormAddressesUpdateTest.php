@@ -65,41 +65,19 @@
     });
     
     
-    it("will match an existing model by partial fields and attach it to current model", function() {
-        $address = Address::factory()->create();
+    it("will match an existing address by partial fields and attach it to current model", function() {
+        $address = Address::factory()->create([Address::KEYS['code'] => null]);
     
         $this->post('suppliers/store', [
             'name' => 'John Smith Ltd',
             'addresses' => [
-                $this->getKey() => $this->testAddress(name: $address->name, address: $address->address, code: $address->code),
+                $this->getKey() => $this->testAddress(name: $address->name, address: $address->address),
             ]
         ]);
         
         $supplier = Supplier::with('addresses')->first();
         expect($supplier->addresses->first()->address)->toBe($address->address);
         expect(Address::count())->toBe(1);
-    });
-    
-    /**
-     *  Should the fields be updated too?
-     *
-     *  Answer: Yes, as the fields would be prefilled from an existing address
-     *  i.e. if they're different, they must have been edited.
-     */
-    it('matches and attaches an existing address with an ID', function() {
-        $address = Address::factory()->create([
-            Address::KEYS['name'] => '221B Baker Street',
-        ]);
-        $this->assertDatabaseHas('addresses', ['name' => '221B Baker Street']);
-        $this->post('suppliers/store', [
-            'name' => 'John Smith Ltd',
-            'addresses' => [
-                $this->getKey() => $this->testAddress(address_id: $address->id, name: $address->name)
-            ]
-        ]);
-        $supplier = Supplier::with('addresses')->first();
-        $this->assertEquals(1, $supplier->addresses->count());
-        $this->assertEquals($address->name, $supplier->addresses->first()->name);
     });
     
     /**

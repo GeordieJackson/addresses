@@ -15,7 +15,6 @@
         public function update(Request $request)
         {
             $supplier = Supplier::findOrFail($request->id);
-            
             $supplier->fill($request->all())->save();
             
             $supplier->syncAddresses();
