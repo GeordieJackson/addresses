@@ -6,7 +6,7 @@
     use GeordieJackson\Addresses\Models\Address;
     use Illuminate\Support\Collection;
     
-    class GetAddressModels
+    class GetModelsAndSave
     {
         public function handle(Collection $addresses, Closure $next)
         {

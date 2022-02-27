@@ -2,7 +2,7 @@
     
     namespace GeordieJackson\Addresses;
     
-    use GeordieJackson\Addresses\Pipes\GetAddressModels;
+    use GeordieJackson\Addresses\Pipes\GetModelsAndSave;
     use GeordieJackson\Addresses\Pipes\RemoveBlankEntries;
     use GeordieJackson\Addresses\Pipes\RemoveDeletionEntries;
     use Illuminate\Pipeline\Pipeline;
@@ -27,7 +27,7 @@
                 ->through([
                     RemoveBlankEntries::class,
                     RemoveDeletionEntries::class,
-                    GetAddressModels::class,
+                    GetModelsAndSave::class,
                 ])
                 ->thenReturn();
         }

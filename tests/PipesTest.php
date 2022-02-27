@@ -1,7 +1,7 @@
 <?php
     
     use GeordieJackson\Addresses\Models\Address;
-    use GeordieJackson\Addresses\Pipes\GetAddressModels;
+    use GeordieJackson\Addresses\Pipes\GetModelsAndSave;
     use GeordieJackson\Addresses\Pipes\RemoveBlankEntries;
     use GeordieJackson\Addresses\Pipes\RemoveDeletionEntries;
     use Illuminate\Pipeline\Pipeline;
@@ -51,7 +51,7 @@
         ]);
         
         $pipeline = app(Pipeline::class);
-        $addresses = $pipeline->send($addresses)->through([GetAddressModels::class])->thenReturn();
+        $addresses = $pipeline->send($addresses)->through([GetModelsAndSave::class])->thenReturn();
         
         $addresses->each(function($address) {
             expect($address)->toBeInstanceOf(Address::class);

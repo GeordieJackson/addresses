@@ -28,7 +28,7 @@
         expect(Address::count())->toBe(1);
     });
     
-    it("detaches an address when its input fields are all blank, but does not delete the address from more than 1 inout", function() {
+    it("detaches an address when its input fields are all blank, but does not delete the address from more than 1 input", function() {
         $supplier = Supplier::factory()->create();
         $address1 = Address::factory()->create();
         $address2 = Address::factory()->create();
