@@ -9,6 +9,7 @@
     
     use function app;
     use function collect;
+    use function dd;
     use function request;
     
     class Addresses
@@ -21,7 +22,7 @@
         protected function process()
         {
             $addresses = collect(request()->addresses);
-            
+
             return app(Pipeline::class)
                 ->send($addresses)
                 ->through([

@@ -14,16 +14,19 @@
             return $this->morphToMany(Address::class, 'addressable');
         }
         
-        public function attachAddresses() : void
+        public function attachAddresses() : static
         {
             $addresses = Addresses::viaRequest();
             $this->addresses()->attach(ExtractIds::from($addresses));
+            
+            return $this;
         }
         
-        public function syncAddresses() : void
+        public function syncAddresses() : static
         {
             $addresses = Addresses::viaRequest();
-//            dd($addresses);
             $this->addresses()->sync(ExtractIds::from($addresses));
+            
+            return $this;
         }
     }
