@@ -31,7 +31,7 @@
         {
             $owners = collect();
             foreach(collect(config('addresses'))->values() as $relationship) {
-                foreach($this->$relationship as $owner) {
+                foreach($relationship as $owner) {
                     $owners->push($owner);
                 }
             }
